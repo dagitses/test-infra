@@ -33,6 +33,7 @@ jobs:
             --create-environment --debug \
                 | tee "${GITHUB_STEP_SUMMARY}"
 
+      docker-image: python:3.11.0-slim-bullseye
       runner: linux.large
 
   flake8:
@@ -65,4 +66,5 @@ jobs:
             --create-environment --debug \
                 | tee "${GITHUB_STEP_SUMMARY}"
 
+      docker-image: python:3.11.0-slim-bullseye
       runner: linux.large
