@@ -19,7 +19,7 @@ jobs:
       script: |
         # black writes its output to stderr, so we redirect stderr to
         # tee, and then return tee's output back to stderr.
-        PYTHONPATH=tools/bosco/scripts/src/ python tools/bosco/scripts/black.py \
+        PYTHONPATH=tools/bosco/scripts/src/ python3.11 tools/bosco/scripts/black.py \
             --create-environment --debug 2> >(tee "${GITHUB_STEP_SUMMARY}" >&2)
 
       docker-image: python:3.11.0-slim-bullseye
@@ -29,7 +29,7 @@ jobs:
     uses: pytorch/test-infra/.github/workflows/linux_job.yml@main
     with:
       script: |
-        PYTHONPATH=tools/bosco/scripts/src/ python tools/bosco/scripts/coverage.py \
+        PYTHONPATH=tools/bosco/scripts/src/ python3.11 tools/bosco/scripts/coverage.py \
             --create-environment --debug \
                 | tee "${GITHUB_STEP_SUMMARY}"
 
@@ -39,7 +39,7 @@ jobs:
     uses: pytorch/test-infra/.github/workflows/linux_job.yml@main
     with:
       script: |
-        PYTHONPATH=tools/bosco/scripts/src/ python tools/bosco/scripts/flake8.py \
+        PYTHONPATH=tools/bosco/scripts/src/ python3.11 tools/bosco/scripts/flake8.py \
             --create-environment --debug \
                 | tee "${GITHUB_STEP_SUMMARY}"
 
@@ -50,7 +50,7 @@ jobs:
     uses: pytorch/test-infra/.github/workflows/linux_job.yml@main
     with:
       script: |
-        PYTHONPATH=tools/bosco/scripts/src/ python tools/bosco/scripts/mypy.py \
+        PYTHONPATH=tools/bosco/scripts/src/ python3.11 tools/bosco/scripts/mypy.py \
             --create-environment --debug \
                 | tee "${GITHUB_STEP_SUMMARY}"
 
@@ -61,7 +61,7 @@ jobs:
     uses: pytorch/test-infra/.github/workflows/linux_job.yml@main
     with:
       script: |
-        PYTHONPATH=tools/bosco/scripts/src/ python tools/bosco/scripts/pytest.py \
+        PYTHONPATH=tools/bosco/scripts/src/ python3.11 tools/bosco/scripts/pytest.py \
             --create-environment --debug \
                 | tee "${GITHUB_STEP_SUMMARY}"
 
